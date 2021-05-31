@@ -1,0 +1,5 @@
+gcc game.c main.c -o piskvorky.exe
+piskvorky.exe
+
+enemyPositionX = s1.EnemyLocationX;
+enemyPositionY = s1.EnemyLocationY;
