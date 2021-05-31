@@ -7,7 +7,8 @@
 struct EnemyLoc
 {
     int EnemyLocationX;
-    int EnemyLocationY; 
+    int EnemyLocationY;
+    int attempts;
 };
 
 void sleep(unsigned int mseconds)
@@ -85,21 +86,31 @@ else if (enemyYPosition > numOfPoles - 1){
     }
 
 // ------------------------------------------------------------
+if(attempts%2){
+    for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
+        for (int f = 0; i < numOfPoles; i++){ 
 
-for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
-    for (int f = 0; i < numOfPoles; i++){ 
-
-    if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){ 
+            if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){ 
                 enemyXPosition = enemyXPosition +1;
                 enemyYPosition = enemyYPosition +1;
-                printf("Tady funguju kokote\n");
-                }
-   
+            }
+        }
+    } 
+}
+
+    else{
+    s1.EnemyLocationX = positionX + 1;
+    s1.EnemyLocationY = positionY + 1;
     }
-} 
+
+   
+
+    attempts++;
+    printf("Pokusů: %d\n", attempts);
 
     s1.EnemyLocationX = enemyXPosition;
     s1.EnemyLocationY = enemyYPosition;
+    s1.attempts = attempts;
 
     printf("osa X: %d\n", enemyXPosition);
     printf("osa Y: %d\n", enemyYPosition);
@@ -109,7 +120,7 @@ for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
 
 void game(void){
 
-    int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts;
+    int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts = 0;
     char playerChar, enemyChar;
 
     system("cls");
@@ -166,7 +177,8 @@ fflush(stdin);
 
         enemyPositionX = s1.EnemyLocationX;
         enemyPositionY = s1.EnemyLocationY;
-
+        attempts = s1.attempts;
+            
         doMove(enemyChar, enemyPositionX , enemyPositionY, numberOfPoles, generatedPoles);
     }
 
