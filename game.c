@@ -18,7 +18,9 @@ void sleep(unsigned int mseconds)
 }
 
 char doMove(char playerChar, int positionX, int positionY, int numOfPoles, char poles[][numOfPoles]){
-    poles[positionX - 1 ][positionY - 1] = playerChar;
+    
+poles[positionX - 1 ][positionY - 1] = playerChar;
+
         for (int i = 0; i < numOfPoles; i++){
          for(int j = 0; j < numOfPoles; j++){
             printf("%c ", poles[i][j]);
@@ -49,51 +51,52 @@ system("cls");
 return;
 }
 
-struct EnemyLoc AIMove(int positionX, int positionY, int numOfPoles, char poles[][numOfPoles]){
-    int numberX = RandGenNum(numOfPoles);
-    int numberY = RandGenNum(numOfPoles);
+struct EnemyLoc AIMove(int positionX, int positionY, int numOfPoles, char poles[][numOfPoles], int attempts){
+    
+    int numberX = RandGenNum(numOfPoles);   // Generování random X pozice v poli
+    int numberY = RandGenNum(numOfPoles);   // Generování random Y pozice v poli
 
     struct EnemyLoc s1;
 
 //Generating of X position
     int enemyXPosition = (positionX - numberX) / 2;
 
-    if(enemyXPosition < 1){
+    if(enemyXPosition < 1){ // Pokud je pozice X menší než je délka pole...
     enemyXPosition = 1;
     enemyXPosition = enemyXPosition + numberX;
-    } else if (enemyXPosition > numOfPoles - 1){
+    } 
+    
+    else if (enemyXPosition > numOfPoles - 1){ // Pokud je pozice X více než je délka pole...
     enemyXPosition = numOfPoles;
     enemyXPosition = enemyXPosition - numberY;
     }
 
-    for (int i = 0; i < numOfPoles; i++){
-    for (int f = 0; i < numOfPoles; i++){ 
-        if (poles[i][f] == 'x' || poles[i][f] == 'o'){
-            enemyXPosition == enemyXPosition + 1;
-            printf("Posun z X\n");
-        }
-    }        
-}
-
 //Generating of Y position
     int enemyYPosition = (numberY - numberY) / 2;
 
-    if(enemyYPosition < 1){
+if(enemyYPosition < 1){
     enemyYPosition = 1;
     enemyYPosition = enemyYPosition + numberY;
-    } else if (enemyYPosition > numOfPoles - 1){
+    } 
+    
+else if (enemyYPosition > numOfPoles - 1){
     enemyYPosition = numOfPoles;
     enemyYPosition = enemyYPosition - numberY;
     }
 
-for (int i = 0; i < numOfPoles ; i++){
+// ------------------------------------------------------------
+
+for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
     for (int f = 0; i < numOfPoles; i++){ 
-        if (poles[i][f] == 'x' || poles[i][f] == 'o'){
-            enemyYPosition == enemyYPosition + 1;
-            printf("Posun z Y\n");
-        }
-    }       
-}
+
+    if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){ 
+                enemyXPosition = enemyXPosition +1;
+                enemyYPosition = enemyYPosition +1;
+                printf("Tady funguju kokote\n");
+                }
+   
+    }
+} 
 
     s1.EnemyLocationX = enemyXPosition;
     s1.EnemyLocationY = enemyYPosition;
@@ -106,7 +109,7 @@ for (int i = 0; i < numOfPoles ; i++){
 
 void game(void){
 
-    int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1;
+    int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts;
     char playerChar, enemyChar;
 
     system("cls");
@@ -159,7 +162,7 @@ fflush(stdin);
 
         enemyPlayLoad();
 
-        struct EnemyLoc s1 =  AIMove(positionX, positionY, numberOfPoles, generatedPoles);
+        struct EnemyLoc s1 =  AIMove(positionX, positionY, numberOfPoles, generatedPoles, attempts);
 
         enemyPositionX = s1.EnemyLocationX;
         enemyPositionY = s1.EnemyLocationY;
