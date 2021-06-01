@@ -86,24 +86,27 @@ else if (enemyYPosition > numOfPoles - 1){
     }
 
 // ------------------------------------------------------------
+
 if(attempts%2){
     for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
         for (int f = 0; i < numOfPoles; i++){ 
-
             if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){ 
-                enemyXPosition = enemyXPosition +1;
-                enemyYPosition = enemyYPosition +1;
+                AIMove(positionX, positionY, numOfPoles, poles, attempts);
+
+                printf("Proběhnula kontrola 2\n");
             }
         }
     } 
 }
 
     else{
-    s1.EnemyLocationX = positionX + 1;
-    s1.EnemyLocationY = positionY + 1;
+        enemyXPosition = positionY + numOfPoles;
+        enemyYPosition = positionX - numOfPoles;
+        if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){
+            AIMove(positionX, positionY, numOfPoles, poles, attempts);
+        }
+        printf("Proběhnula kontrola else\n");
     }
-
-   
 
     attempts++;
     printf("Pokusů: %d\n", attempts);
