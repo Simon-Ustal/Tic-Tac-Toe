@@ -109,7 +109,28 @@ bool authAxis(int numOfPoles, char poles[][numOfPoles], bool vyhra){
 
 if(poles[0][0] == 'x' && poles[1][0] == 'x' && poles[2][0] == 'x'){
         vyhra = true;
+}   
+
+else if(poles[0][1] == 'x' && poles[1][1] == 'x' && poles[2][1] == 'x'){
+    vyhra = true;
+    } 
+
+else if(poles[0][2] == 'x' && poles[1][2] == 'x' && poles[2][2] == 'x'){
+    vyhra = true;
+    } 
+
+    else if(poles[0][0] == 'x' && poles[0][1] == 'x' && poles[0][2] == 'x'){
+        vyhra = true;
     }
+    
+        else if(poles[1][0] == 'x' && poles[1][1] == 'x' && poles[1][2] == 'x'){
+        vyhra = true;
+        }         
+
+            else if(poles[2][0] == 'x' && poles[2][1] == 'x' && poles[2][2] == 'x'){
+                    vyhra = true;
+                }          
+
 return vyhra;
 }
 
@@ -188,7 +209,8 @@ fflush(stdin);
         break;
         }  
     }
-        printf("Vyhral x!\n\n");
+        printf("\n");
+        printf("Vyhral %c!\n\n", playerChar);
         printf("Pro spusteni hry stisknete [Num 1]\n");
         printf("Pro ukonceni hry stisknete [Num 2]\n\n");
         printf("Vybrany znak: ");
