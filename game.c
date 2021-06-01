@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "game.h"
+#include <stdbool.h> 
 
 struct EnemyLoc
 {
@@ -90,10 +91,8 @@ else if (enemyYPosition > numOfPoles - 1){
 
 for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
     for (int f = 0; i < numOfPoles; i++){ 
-        if (poles[enemyXPosition][enemyYPosition] == 'x'){ 
+        if ('x' == poles[enemyXPosition][enemyYPosition] || 'o' == poles[enemyXPosition][enemyYPosition]){ 
         AIMove(positionX, positionY, numOfPoles, poles, attempts);
-        }else if(poles[enemyXPosition][enemyYPosition] == 'o'){
-         AIMove(positionX+1, positionY+1, numOfPoles, poles, attempts);   
         }
     }   
 }
@@ -101,16 +100,26 @@ for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
     s1.EnemyLocationX = enemyXPosition;
     s1.EnemyLocationY = enemyYPosition;
 
-    printf("osa X: %d\n", enemyXPosition);
-    printf("osa Y: %d\n", enemyYPosition);
+
 
     return s1;
+}
+
+char authAxis(int numOfPoles, char poles[][numOfPoles-1], bool vyhra){
+
+printf("%c", poles[0][0]);
+    if(poles[0][0] == 'x' && poles[1][0] == 'x' && poles[2][0] == 'x'){
+        printf("Výhra!\n");
+        vyhra = true;
+    }
+return vyhra;
 }
 
 void game(void){
 
     int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts = 0;
     char playerChar, enemyChar;
+    bool vyhra;
 
     srand(time(NULL));
 
@@ -168,8 +177,17 @@ fflush(stdin);
 
         enemyPositionX = s1.EnemyLocationX;
         enemyPositionY = s1.EnemyLocationY;
-            
+
+        printf("osa X: %d\n", enemyPositionX);
+        printf("osa Y: %d\n", enemyPositionY);
+
         doMove(enemyChar, enemyPositionX , enemyPositionY, numberOfPoles, generatedPoles);
+
+        vyhra = authAxis(numberOfPoles, generatedPoles, vyhra);
+
+        if(vyhra == true){
+            break;
+        }
     }
 
 return;
