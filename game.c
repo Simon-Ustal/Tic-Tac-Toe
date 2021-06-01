@@ -87,33 +87,19 @@ else if (enemyYPosition > numOfPoles - 1){
 
 // ------------------------------------------------------------
 
-if(attempts%2){
-    for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
-        for (int f = 0; i < numOfPoles; i++){ 
-            if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){ 
-                AIMove(positionX, positionY, numOfPoles, poles, attempts);
 
-                printf("Proběhnula kontrola 2\n");
-            }
+for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
+    for (int f = 0; i < numOfPoles; i++){ 
+        if (poles[enemyXPosition][enemyYPosition] == 'x'){ 
+        AIMove(positionX, positionY, numOfPoles, poles, attempts);
+        }else if(poles[enemyXPosition][enemyYPosition] == 'o'){
+         AIMove(positionX+1, positionY+1, numOfPoles, poles, attempts);   
         }
-    } 
+    }   
 }
-
-    else{
-        enemyXPosition = positionY + numOfPoles;
-        enemyYPosition = positionX - numOfPoles;
-        if (poles[enemyXPosition][enemyYPosition] == 'x' || poles[enemyXPosition][enemyYPosition] == 'o'){
-            AIMove(positionX, positionY, numOfPoles, poles, attempts);
-        }
-        printf("Proběhnula kontrola else\n");
-    }
-
-    attempts++;
-    printf("Pokusů: %d\n", attempts);
 
     s1.EnemyLocationX = enemyXPosition;
     s1.EnemyLocationY = enemyYPosition;
-    s1.attempts = attempts;
 
     printf("osa X: %d\n", enemyXPosition);
     printf("osa Y: %d\n", enemyYPosition);
@@ -125,6 +111,8 @@ void game(void){
 
     int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts = 0;
     char playerChar, enemyChar;
+
+    srand(time(NULL));
 
     system("cls");
 
@@ -180,7 +168,6 @@ fflush(stdin);
 
         enemyPositionX = s1.EnemyLocationX;
         enemyPositionY = s1.EnemyLocationY;
-        attempts = s1.attempts;
             
         doMove(enemyChar, enemyPositionX , enemyPositionY, numberOfPoles, generatedPoles);
     }
