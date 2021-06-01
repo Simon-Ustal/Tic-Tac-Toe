@@ -105,11 +105,9 @@ for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
     return s1;
 }
 
-char authAxis(int numOfPoles, char poles[][numOfPoles-1], bool vyhra){
+bool authAxis(int numOfPoles, char poles[][numOfPoles], bool vyhra){
 
-printf("%c", poles[0][0]);
-    if(poles[0][0] == 'x' && poles[1][0] == 'x' && poles[2][0] == 'x'){
-        printf("Výhra!\n");
+if(poles[0][0] == 'x' && poles[1][0] == 'x' && poles[2][0] == 'x'){
         vyhra = true;
     }
 return vyhra;
@@ -118,7 +116,7 @@ return vyhra;
 void game(void){
 
     int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts = 0;
-    char playerChar, enemyChar;
+    char playerChar, enemyChar, indicator;
     bool vyhra;
 
     srand(time(NULL));
@@ -185,10 +183,24 @@ fflush(stdin);
 
         vyhra = authAxis(numberOfPoles, generatedPoles, vyhra);
 
-        if(vyhra == true){
-            break;
-        }
+        if(true == vyhra){
+            fflush(stdin);
+        break;
+        }  
     }
+        printf("Vyhral x!\n\n");
+        printf("Pro spusteni hry stisknete [Num 1]\n");
+        printf("Pro ukonceni hry stisknete [Num 2]\n\n");
+        printf("Vybrany znak: ");
+        scanf("%c", &indicator);  
 
-return;
+        fflush(stdin);
+
+        if(indicator == '1'){
+        game();
+        }
+
+        else if(indicator == '2') {
+        return;
+        }
 }
