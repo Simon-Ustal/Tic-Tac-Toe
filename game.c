@@ -479,16 +479,14 @@ fflush(stdin);
         vyhra = authAxisPlayer(numberOfPoles, generatedPoles, vyhra, playerChar, enemyChar);
 
         if(true == enemyvyhra){
-            fflush(stdin);
         break; 
         }
 
         else if(true == vyhra){
-            fflush(stdin);
         break;
         }  
     }
-    
+
 if(true == vyhra){
     printf("\n");
         printf("Vyhral %c!\n\n", playerChar);
@@ -506,9 +504,7 @@ if(true == vyhra){
     else if(indicator == '2') {
         return;
     }
-}
-
-else if(true == enemyvyhra){
+}else if(true == enemyvyhra){
         printf("\n");
         printf("Prohrál jsi! Vyhral %c! Zkus to znovu!\n\n", enemyChar);
         printf("Pro spusteni hry stisknete [Num 1]\n");
