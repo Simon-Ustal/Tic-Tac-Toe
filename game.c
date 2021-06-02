@@ -488,6 +488,7 @@ fflush(stdin);
         break;
         }  
     }
+    
 if(true == vyhra){
     printf("\n");
         printf("Vyhral %c!\n\n", playerChar);
