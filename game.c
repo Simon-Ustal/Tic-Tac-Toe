@@ -105,31 +105,34 @@ for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
     return s1;
 }
 
-bool authAxis(int numOfPoles, char poles[][numOfPoles], bool vyhra){
+bool authAxis(int numOfPoles, char poles[][numOfPoles], bool vyhra, int PlayerLocation){
 
+// Horizontal
 if(poles[0][0] == 'x' && poles[1][0] == 'x' && poles[2][0] == 'x'){
-        vyhra = true;
+vyhra = true;
 }   
 
 else if(poles[0][1] == 'x' && poles[1][1] == 'x' && poles[2][1] == 'x'){
-    vyhra = true;
-    } 
+vyhra = true;
+} 
 
 else if(poles[0][2] == 'x' && poles[1][2] == 'x' && poles[2][2] == 'x'){
-    vyhra = true;
-    } 
+vyhra = true;
+} 
 
-    else if(poles[0][0] == 'x' && poles[0][1] == 'x' && poles[0][2] == 'x'){
-        vyhra = true;
-    }
+
+// Vertical
+else if(poles[0][0] == 'x' && poles[0][1] == 'x' && poles[0][2] == 'x'){
+vyhra = true;
+}
     
-        else if(poles[1][0] == 'x' && poles[1][1] == 'x' && poles[1][2] == 'x'){
-        vyhra = true;
-        }         
+else if(poles[1][0] == 'x' && poles[1][1] == 'x' && poles[1][2] == 'x'){
+vyhra = true;
+}         
 
-            else if(poles[2][0] == 'x' && poles[2][1] == 'x' && poles[2][2] == 'x'){
-                    vyhra = true;
-                }          
+else if(poles[2][0] == 'x' && poles[2][1] == 'x' && poles[2][2] == 'x'){
+vyhra = true;
+         
 
 return vyhra;
 }
