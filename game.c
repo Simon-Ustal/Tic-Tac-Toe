@@ -105,35 +105,304 @@ for (int i = 0; i < numOfPoles; i++){      // Ověření znaku
     return s1;
 }
 
-bool authAxis(int numOfPoles, char poles[][numOfPoles], bool vyhra, int PlayerLocation){
+bool authAxisEnemy(int numOfPoles, char poles[][numOfPoles], bool vyhraEnemy, char playerChar, char enemyChar){
 
 // Horizontal
-if(poles[0][0] == 'x' && poles[1][0] == 'x' && poles[2][0] == 'x'){
+if (numOfPoles == 3){
+if(poles[0][0] == enemyChar && poles[1][0] == enemyChar && poles[2][0] == enemyChar){
+vyhraEnemy = true;
+}   
+
+else if(poles[0][1] == enemyChar && poles[1][1] == enemyChar && poles[2][1] == enemyChar){
+vyhraEnemy = true;
+} 
+
+else if(poles[0][2] == enemyChar && poles[1][2] == enemyChar && poles[2][2] == enemyChar){
+vyhraEnemy = true;
+} 
+}
+
+if (numOfPoles == 4){
+
+if(poles[0][0] == enemyChar && poles[1][0] == enemyChar && poles[2][0] == enemyChar && poles[3][0] == enemyChar){
+vyhraEnemy = true;
+}   
+
+else if(poles[0][1] == enemyChar && poles[1][1] == enemyChar && poles[2][1] == enemyChar && poles[3][1] == enemyChar){
+vyhraEnemy = true;
+} 
+
+else if(poles[0][2] == enemyChar && poles[1][2] == enemyChar && poles[2][2] == enemyChar && poles[3][2] == enemyChar){
+vyhraEnemy = true;
+} 
+
+else if(poles[0][3] == enemyChar && poles[1][3] == enemyChar && poles[2][3] == enemyChar && poles[3][3] == enemyChar){
+vyhraEnemy = true;
+} 
+}
+
+if (numOfPoles == 5){
+if(poles[0][0] == enemyChar && poles[1][0] == enemyChar && poles[2][0] == enemyChar && poles[3][0] == enemyChar && poles[4][0] == enemyChar){
+vyhraEnemy = true;
+}   
+
+else if(poles[0][1] == enemyChar && poles[1][1] == enemyChar && poles[2][1] == enemyChar && poles[3][1] == enemyChar && poles[4][1] == enemyChar){
+vyhraEnemy = true;
+} 
+
+else if(poles[0][2] == enemyChar && poles[1][2] == enemyChar && poles[2][2] == enemyChar && poles[3][2] == enemyChar && poles[4][2] == enemyChar){
+vyhraEnemy = true;
+} 
+
+else if(poles[0][3] == enemyChar && poles[1][3] == enemyChar && poles[2][3] == enemyChar && poles[3][3] == enemyChar && poles[4][3] == enemyChar){
+vyhraEnemy = true;
+} 
+
+else if(poles[0][4] == enemyChar && poles[1][4] == enemyChar && poles[2][4] == enemyChar && poles[3][4] == enemyChar && poles[4][4] == enemyChar){
+vyhraEnemy = true;
+} 
+
+}
+//----------------------------------------------------------------> End Of Horizontal
+
+// Vertical
+if (numOfPoles == 3){
+    if(poles[0][0] == enemyChar && poles[0][1] == enemyChar && poles[0][2] == enemyChar){
+vyhraEnemy = true;
+}
+    
+    else if(poles[1][0] == enemyChar && poles[1][1] == enemyChar && poles[1][2] == enemyChar){
+    vyhraEnemy = true;
+    }         
+
+    else if(poles[2][0] == enemyChar && poles[2][1] == enemyChar && poles[2][2] == enemyChar){
+    vyhraEnemy = true;
+    }
+}
+
+if (numOfPoles == 4){
+    if(poles[0][0] == enemyChar && poles[0][1] == enemyChar && poles[0][2] == enemyChar && poles[0][3] == enemyChar){
+    vyhraEnemy = true;
+    }
+    
+    else if(poles[1][0] == enemyChar && poles[1][1] == enemyChar && poles[1][2] == enemyChar && poles[1][3] == enemyChar){
+    vyhraEnemy = true;
+    }         
+
+    else if(poles[2][0] == enemyChar && poles[2][1] == enemyChar && poles[2][2] == enemyChar && poles[2][3] == enemyChar){
+    vyhraEnemy = true;
+    }
+
+    else if(poles[3][0] == enemyChar && poles[3][1] == enemyChar && poles[3][2] == enemyChar && poles[3][3] == enemyChar){
+    vyhraEnemy = true;  
+    }
+}
+
+if (numOfPoles == 5){
+    if(poles[0][0] == enemyChar && poles[0][1] == enemyChar && poles[0][2] == enemyChar && poles[0][3] == enemyChar && poles[0][4] == enemyChar){
+    vyhraEnemy = true;
+    }
+    
+    else if(poles[1][0] == enemyChar && poles[1][1] == enemyChar && poles[1][2] == enemyChar && poles[1][3] == enemyChar && poles[1][4] == enemyChar){
+    vyhraEnemy = true;
+    }         
+
+    else if(poles[2][0] == enemyChar && poles[2][1] == enemyChar && poles[2][2] == enemyChar && poles[2][3] == enemyChar && poles[2][4] == enemyChar){
+    vyhraEnemy = true;
+    }
+
+    else if(poles[3][0] == enemyChar && poles[3][1] == enemyChar && poles[3][2] == enemyChar && poles[3][3] == enemyChar && poles[3][4] == enemyChar){
+    vyhraEnemy = true;  
+    }
+
+    else if(poles[4][0] == enemyChar && poles[4][1] == enemyChar && poles[4][2] == enemyChar && poles[4][3] == enemyChar && poles[4][4] == enemyChar){
+    vyhraEnemy = true;  
+    }
+}
+
+//----------------------------------------------------------------> End Of Vertical
+
+// Diagonal
+if (numOfPoles == 3){
+    if (poles[0][0] == enemyChar && poles[1][1] == enemyChar && poles[2][2] == enemyChar){
+    vyhraEnemy = true;
+    }
+
+    else if (poles[0][2] == enemyChar && poles[1][1] == enemyChar && poles[2][0] == enemyChar){
+        vyhraEnemy = true;
+    }
+} 
+
+if (numOfPoles == 4){
+    if (poles[0][0] == enemyChar && poles[1][1] == enemyChar && poles[2][2] == enemyChar && poles[3][3] == enemyChar){
+    vyhraEnemy = true;
+    }
+
+    else if (poles[0][3] == enemyChar && poles[1][2] == enemyChar && poles[2][1] == enemyChar && poles[3][0] == enemyChar ){
+        vyhraEnemy = true;
+    }
+}
+
+if (numOfPoles == 5){
+    if (poles[0][0] == enemyChar && poles[1][1] == enemyChar && poles[2][2] == enemyChar && poles[3][3] == enemyChar && poles[4][4] == enemyChar){
+    vyhraEnemy = true;
+    }
+
+    else if (poles[0][4] == enemyChar && poles[1][3] == enemyChar && poles[2][2] == enemyChar && poles[4][1] == enemyChar && poles[5][0] == enemyChar){
+    vyhraEnemy = true;
+    }
+}
+
+//----------------------------------------------------------------> End Of Diagonal
+
+return vyhraEnemy;
+}
+
+bool authAxisPlayer(int numOfPoles, char poles[][numOfPoles], bool vyhra, char playerChar, char enemyChar){
+
+// Horizontal
+if (numOfPoles == 3){
+if(poles[0][0] == playerChar && poles[1][0] == playerChar && poles[2][0] == playerChar){
 vyhra = true;
 }   
 
-else if(poles[0][1] == 'x' && poles[1][1] == 'x' && poles[2][1] == 'x'){
+else if(poles[0][1] == playerChar && poles[1][1] == playerChar && poles[2][1] == playerChar){
 vyhra = true;
 } 
 
-else if(poles[0][2] == 'x' && poles[1][2] == 'x' && poles[2][2] == 'x'){
+else if(poles[0][2] == playerChar && poles[1][2] == playerChar && poles[2][2] == playerChar){
+vyhra = true;
+} 
+}
+
+if (numOfPoles == 4){
+
+if(poles[0][0] == playerChar && poles[1][0] == playerChar && poles[2][0] == playerChar && poles[3][0] == playerChar){
+vyhra = true;
+}   
+
+else if(poles[0][1] == playerChar && poles[1][1] == playerChar && poles[2][1] == playerChar && poles[3][1] == playerChar){
 vyhra = true;
 } 
 
+else if(poles[0][2] == playerChar && poles[1][2] == playerChar && poles[2][2] == playerChar && poles[3][2] == playerChar){
+vyhra = true;
+} 
+
+else if(poles[0][3] == playerChar && poles[1][3] == playerChar && poles[2][3] == playerChar && poles[3][3] == playerChar){
+vyhra = true;
+} 
+}
+
+if (numOfPoles == 5){
+if(poles[0][0] == playerChar && poles[1][0] == playerChar && poles[2][0] == playerChar && poles[3][0] == playerChar && poles[4][0] == playerChar){
+vyhra = true;
+}   
+
+else if(poles[0][1] == playerChar && poles[1][1] == playerChar && poles[2][1] == playerChar && poles[3][1] == playerChar && poles[4][1] == playerChar){
+vyhra = true;
+} 
+
+else if(poles[0][2] == playerChar && poles[1][2] == playerChar && poles[2][2] == playerChar && poles[3][2] == playerChar && poles[4][2] == playerChar){
+vyhra = true;
+} 
+
+else if(poles[0][3] == playerChar && poles[1][3] == playerChar && poles[2][3] == playerChar && poles[3][3] == playerChar && poles[4][3] == playerChar){
+vyhra = true;
+} 
+
+else if(poles[0][4] == playerChar && poles[1][4] == playerChar && poles[2][4] == playerChar && poles[3][4] == playerChar && poles[4][4] == playerChar){
+vyhra = true;
+} 
+
+}
 
 // Vertical
-else if(poles[0][0] == 'x' && poles[0][1] == 'x' && poles[0][2] == 'x'){
+if (numOfPoles == 3){
+if(poles[0][0] == playerChar && poles[0][1] == playerChar && poles[0][2] == playerChar){
 vyhra = true;
 }
     
-else if(poles[1][0] == 'x' && poles[1][1] == 'x' && poles[1][2] == 'x'){
+else if(poles[1][0] == playerChar && poles[1][1] == playerChar && poles[1][2] == playerChar){
 vyhra = true;
 }         
 
-else if(poles[2][0] == 'x' && poles[2][1] == 'x' && poles[2][2] == 'x'){
+else if(poles[2][0] == playerChar && poles[2][1] == playerChar && poles[2][2] == playerChar){
 vyhra = true;
-         
+}
+}
 
+if (numOfPoles == 4){
+    if(poles[0][0] == playerChar && poles[0][1] == playerChar && poles[0][2] == playerChar && poles[0][3] == playerChar){
+    vyhra = true;
+    }
+    
+    else if(poles[1][0] == playerChar && poles[1][1] == playerChar && poles[1][2] == playerChar && poles[1][3] == playerChar){
+    vyhra = true;
+    }         
+
+    else if(poles[2][0] == playerChar && poles[2][1] == playerChar && poles[2][2] == playerChar && poles[2][3] == playerChar){
+    vyhra = true;
+    }
+
+    else if(poles[3][0] == playerChar && poles[3][1] == playerChar && poles[3][2] == playerChar && poles[3][3] == playerChar){
+    vyhra = true;  
+    }
+}
+
+if (numOfPoles == 5){
+if(poles[0][0] == playerChar && poles[0][1] == playerChar && poles[0][2] == playerChar && poles[0][3] == playerChar && poles[0][4] == playerChar){
+    vyhra = true;
+    }
+    
+    else if(poles[1][0] == playerChar && poles[1][1] == playerChar && poles[1][2] == playerChar && poles[1][3] == playerChar && poles[1][4] == playerChar){
+    vyhra = true;
+    }         
+
+    else if(poles[2][0] == playerChar && poles[2][1] == playerChar && poles[2][2] == playerChar && poles[2][3] == playerChar && poles[2][4] == playerChar){
+    vyhra = true;
+    }
+
+    else if(poles[3][0] == playerChar && poles[3][1] == playerChar && poles[3][2] == playerChar && poles[3][3] == playerChar && poles[3][4] == playerChar){
+    vyhra = true;  
+    }
+
+    else if(poles[4][0] == playerChar && poles[4][1] == playerChar && poles[4][2] == playerChar && poles[4][3] == playerChar && poles[4][4] == playerChar){
+    vyhra = true;  
+    }
+
+}
+
+// Diagonal
+if (numOfPoles == 3){
+    if (poles[0][0] == playerChar && poles[1][1] == playerChar && poles[2][2] == playerChar){
+    vyhra = true;
+    }
+
+    else if (poles[0][2] == playerChar && poles[1][1] == playerChar && poles[2][0] == playerChar){
+        vyhra = true;
+    }
+} 
+
+if (numOfPoles == 4){
+    if (poles[0][0] == playerChar && poles[1][1] == playerChar && poles[2][2] == playerChar && poles[3][3] == playerChar){
+    vyhra = true;
+    }
+
+    else if (poles[0][3] == playerChar && poles[1][2] == playerChar && poles[2][1] == playerChar && poles[3][0] == playerChar ){
+        vyhra = true;
+    }
+}
+
+if (numOfPoles == 5){
+    if (poles[0][0] == playerChar && poles[1][1] == playerChar && poles[2][2] == playerChar && poles[3][3] == playerChar && poles[4][4] == playerChar){
+    vyhra = true;
+    }
+
+    else if (poles[0][4] == playerChar && poles[1][3] == playerChar && poles[2][2] == playerChar && poles[4][1] == playerChar && poles[5][0] == playerChar){
+    vyhra = true;
+    }
+}
 return vyhra;
 }
 
@@ -141,7 +410,7 @@ void game(void){
 
     int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts = 0;
     char playerChar, enemyChar, indicator;
-    bool vyhra;
+    bool vyhra, enemyvyhra;
 
     srand(time(NULL));
 
@@ -205,14 +474,22 @@ fflush(stdin);
 
         doMove(enemyChar, enemyPositionX , enemyPositionY, numberOfPoles, generatedPoles);
 
-        vyhra = authAxis(numberOfPoles, generatedPoles, vyhra);
+        enemyvyhra = authAxisEnemy(numberOfPoles, generatedPoles, vyhra, playerChar, enemyChar);
 
-        if(true == vyhra){
+        vyhra = authAxisPlayer(numberOfPoles, generatedPoles, vyhra, playerChar, enemyChar);
+
+        if(true == enemyvyhra){
+            fflush(stdin);
+        break; 
+        }
+
+        else if(true == vyhra){
             fflush(stdin);
         break;
         }  
     }
-        printf("\n");
+if(true == vyhra){
+    printf("\n");
         printf("Vyhral %c!\n\n", playerChar);
         printf("Pro spusteni hry stisknete [Num 1]\n");
         printf("Pro ukonceni hry stisknete [Num 2]\n\n");
@@ -221,11 +498,31 @@ fflush(stdin);
 
         fflush(stdin);
 
-        if(indicator == '1'){
+    if(indicator == '1'){
         game();
         }
 
-        else if(indicator == '2') {
+    else if(indicator == '2') {
         return;
-        }
+    }
+}
+
+else if(true == enemyvyhra){
+        printf("\n");
+        printf("Prohrál jsi! Vyhral %c! Zkus to znovu!\n\n", enemyChar);
+        printf("Pro spusteni hry stisknete [Num 1]\n");
+        printf("Pro ukonceni hry stisknete [Num 2]\n\n");
+        printf("Vybrany znak: ");
+        scanf("%c", &indicator);  
+
+        fflush(stdin);
+
+    if(indicator == '1'){
+    game();
+    }
+
+    else if(indicator == '2') {
+    return;
+    }
+}
 }
