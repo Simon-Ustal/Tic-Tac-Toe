@@ -1,3 +1,5 @@
+// Šimon Ustal II.B 06.06.2021 ========== Tic-Tac-Toe ==========
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
