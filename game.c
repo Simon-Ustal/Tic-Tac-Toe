@@ -35,6 +35,7 @@ char doMove(char playerChar, int positionX, int positionY, int numOfPoles, char 
         }
         printf("\n");
     }
+    printf("\n");
     return 1;
 }
 
@@ -107,7 +108,6 @@ struct EnemyLoc AIMove(int positionX, int positionY, int numOfPoles, char poles[
     }
     else
     {
-        printf("%d, %d\n", enemyXPosition, enemyYPosition);
         s1.EnemyLocationX = enemyXPosition;
         s1.EnemyLocationY = enemyYPosition;
     }
@@ -563,8 +563,8 @@ void game(void)
         enemyPositionX = s1.EnemyLocationX;
         enemyPositionY = s1.EnemyLocationY;
 
-        printf("osa X: %d\n", enemyPositionX);
-        printf("osa Y: %d\n", enemyPositionY);
+        printf("Souper zapsal na X: %d\n", enemyPositionX);
+        printf("Souper zapsal na Y: %d\n\n", enemyPositionY);
 
         doMove(enemyChar, enemyPositionX, enemyPositionY, numberOfPoles, generatedPoles);
 
@@ -586,8 +586,8 @@ void game(void)
     if (true == vyhra)
     {
         printf("\n");
-        printf("Vyhrál jsi! Vyhral %c!\n\n", playerChar);
-        printf("Pro spusteni hry stisknete [Num 1]\n");
+        printf("Vyhral jsi! Vyhral %c! Jen smele dál!\n\n", playerChar);
+        printf("Pro znovuspusteni hry [Num 1]\n");
         printf("Pro ukonceni hry stisknete [Num 2]\n\n");
         printf("Vybrany znak: ");
 
@@ -610,8 +610,8 @@ void game(void)
     else if (true == enemyvyhra)
     {
         printf("\n");
-        printf("Prohrál jsi! Vyhral %c! Zkus to znovu!\n\n", enemyChar);
-        printf("Pro spusteni hry stisknete [Num 1]\n");
+        printf("Prohral jsi! Vyhral %c! Zkus to znovu!\n\n", enemyChar);
+        printf("Pro odvetu stisknete [Num 1]\n");
         printf("Pro ukonceni hry stisknete [Num 2]\n\n");
         printf("Vybrany znak: ");
 

@@ -6,21 +6,21 @@
 #include "game.h"
 
 int main(void) {
-  char indicator;
+  int indicator [1];
     printf("\n");
     printf("========== Tic-Tac-Toe ==========\n\n");
     printf("Pro spusteni hry stisknete [Num 1]\n");
     printf("Pro ukonceni hry stisknete [Num 2]\n\n");
     printf("Vybrany znak: ");
-    scanf("%c", &indicator);
+    scanf("%c", &indicator[1]);
 
   fflush(stdin);
 
-  if(indicator == '1'){
+  if(indicator[1] == '1'){
   game();
   }
 
-  else if(indicator == '2') {
+  else if(indicator[1] == '2') {
   return 0;
   }
 
