@@ -493,12 +493,26 @@ bool authAxisPlayer(int numOfPoles, char poles[][numOfPoles], bool vyhra, char p
     return vyhra;
 }
 
+bool Pat(int numOfPoles,char poles[][numOfPoles]){
+bool pat;
+
+pat = true;
+
+for(int i = 0;i<numOfPoles;i++)
+    for(int a = 0;a<numOfPoles;a++){
+        if(poles[i][a] == '-'){
+            pat = false;
+        }
+    }
+    return pat;
+}
+
 void game(void)
 {
 
     int numberOfPoles, positionX, positionY, enemyPositionX = 1, enemyPositionY = 1, attempts = 0;
     char playerChar, enemyChar, indicator;
-    bool vyhra, enemyvyhra;
+    bool vyhra, enemyvyhra, pat;
 
     srand(time(NULL));
 
@@ -572,6 +586,8 @@ void game(void)
 
         vyhra = authAxisPlayer(numberOfPoles, generatedPoles, vyhra, playerChar, enemyChar);
 
+        pat = Pat(numberOfPoles, generatedPoles);
+
         if (true == enemyvyhra)
         {
             break;
@@ -581,12 +597,16 @@ void game(void)
         {
             break;
         }
+
+        else if(true == pat){
+            break;
+        }
     }
 
-    if (true == vyhra)
+    if (vyhra)
     {
         printf("\n");
-        printf("Vyhral jsi! Vyhral %c! Jen smele dál!\n\n", playerChar);
+        printf("Vyhral jsi! Vyhral %c! Jen smele dal!\n\n", playerChar);
         printf("Pro znovuspusteni hry [Num 1]\n");
         printf("Pro ukonceni hry stisknete [Num 2]\n\n");
         printf("Vybrany znak: ");
@@ -607,7 +627,7 @@ void game(void)
 
         fflush(stdin);
     }
-    else if (true == enemyvyhra)
+    else if (enemyvyhra)
     {
         printf("\n");
         printf("Prohral jsi! Vyhral %c! Zkus to znovu!\n\n", enemyChar);
@@ -616,6 +636,26 @@ void game(void)
         printf("Vybrany znak: ");
 
         scanf("\n\n%c", &indicator);
+
+        if (indicator == '1')
+        {
+            game();
+        }
+
+        else if (indicator == '2')
+        {
+            return;
+        }
+    }
+    else if (pat)
+    {
+        printf("\n");
+        printf("Pat! Nikdo nevyhral! Zkus to znovu!\n\n", enemyChar);
+        printf("Pro odvetu stisknete [Num 1]\n");
+        printf("Pro ukonceni hry stisknete [Num 2]\n\n");
+        printf("Vybrany znak: ");
+
+        scanf("\n\n\n%c", &indicator);
 
         if (indicator == '1')
         {
