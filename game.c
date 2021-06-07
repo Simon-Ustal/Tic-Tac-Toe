@@ -102,12 +102,13 @@ struct EnemyLoc AIMove(int positionX, int positionY, int numOfPoles, char poles[
 
     // ------------------------------------------------------------
 
+    
     if ('x' == poles[enemyXPosition-1][enemyYPosition-1] || 'o' == poles[enemyXPosition-1][enemyYPosition-1])
     {
         s1 = AIMove(positionX, positionY, numOfPoles, poles, attempts);
     }
-    else
-    {
+
+    else{
         s1.EnemyLocationX = enemyXPosition;
         s1.EnemyLocationY = enemyYPosition;
     }

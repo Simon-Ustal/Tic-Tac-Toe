@@ -10,7 +10,7 @@
 int main(void) {
   int indicator [1];
   char name[10];
-    printf("Zadej sve jmeno (bez mezer): ");
+    printf("Zadej sve jmeno: ");
     scanf("%[^\n]s", name);
 
     system("cls");
