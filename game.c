@@ -1,4 +1,4 @@
-// Šimon Ustal II.B 06.06.2021 ========== Tic-Tac-Toe ==========
+// Šimon Ustal II.B 12.06.2021 ========== Tic-Tac-Toe ==========
 
 #include <stdio.h>
 #include <string.h>
@@ -24,7 +24,6 @@ void sleep(unsigned int mseconds)
 
 char doMove(char playerChar, int positionX, int positionY, int numOfPoles, char poles[][numOfPoles])
 {
-
     poles[positionX - 1][positionY - 1] = playerChar;
 
     for (int i = 0; i < numOfPoles; i++)
